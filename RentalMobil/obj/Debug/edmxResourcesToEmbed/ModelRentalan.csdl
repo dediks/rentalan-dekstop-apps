@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_rental_mobilModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="id_admin" />
+    </Key>
+    <Property Name="id_admin" Type="Int32" Nullable="false" />
+    <Property Name="nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_admins" FromRole="admins" ToRole="orders" />
+    <NavigationProperty Name="payments" Relationship="Self.FK_payments_admins" FromRole="admins" ToRole="payments" />
+  </EntityType>
+  <EntityType Name="cars">
+    <Key>
+      <PropertyRef Name="id_mobil" />
+    </Key>
+    <Property Name="id_mobil" Type="Int32" Nullable="false" />
+    <Property Name="nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="vendor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="harga_sewa" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="transmisi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bagasi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="order_car" Relationship="Self.FK_order_car_cars" FromRole="cars" ToRole="order_car" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="members">
+    <Key>
+      <PropertyRef Name="id_member" />
+    </Key>
+    <Property Name="id_member" Type="Int32" Nullable="false" />
+    <Property Name="no_identitas" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="no_telp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="alamat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_orders_members" FromRole="members" ToRole="orders" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="order_car">
+    <Key>
+      <PropertyRef Name="id_order_car" />
+    </Key>
+    <Property Name="id_order_car" Type="Int32" Nullable="false" />
+    <Property Name="id_order" Type="Int32" />
+    <Property Name="id_car" Type="Int32" />
+    <Property Name="jumlah" Type="Int32" />
+    <Property Name="waktu_ambil" Type="DateTime" Precision="3" />
+    <Property Name="waktu_kembali" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="cars" Relationship="Self.FK_order_car_cars" FromRole="order_car" ToRole="cars" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_order_car_orders" FromRole="order_car" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="id_order" />
+    </Key>
+    <Property Name="id_order" Type="Int32" Nullable="false" />
+    <Property Name="id_member" Type="Int32" />
+    <Property Name="invoice_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total_price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="tgl_order" Type="DateTime" Precision="3" />
+    <Property Name="id_admin" Type="Int32" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="admins" Relationship="Self.FK_orders_admins" FromRole="orders" ToRole="admins" />
+    <NavigationProperty Name="members" Relationship="Self.FK_orders_members" FromRole="orders" ToRole="members" />
+    <NavigationProperty Name="order_car" Relationship="Self.FK_order_car_orders" FromRole="orders" ToRole="order_car" />
+    <NavigationProperty Name="payments" Relationship="Self.FK_payments_orders" FromRole="orders" ToRole="payments" />
+  </EntityType>
+  <EntityType Name="payments">
+    <Key>
+      <PropertyRef Name="id_payment" />
+    </Key>
+    <Property Name="id_admin" Type="Int32" />
+    <Property Name="id_payment" Type="Int32" Nullable="false" />
+    <Property Name="id_member" Type="Int32" />
+    <Property Name="id_order" Type="Int32" />
+    <Property Name="waktu_bayar" Type="DateTime" Precision="3" />
+    <Property Name="nama_rekening" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="nominal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="nama_bank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="nomor_rekening" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="denda" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="admins" Relationship="Self.FK_payments_admins" FromRole="payments" ToRole="admins" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_payments_orders" FromRole="payments" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_orders_admins">
+    <End Role="admins" Type="Self.admins" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="admins">
+        <PropertyRef Name="id_admin" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="id_admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_payments_admins">
+    <End Role="admins" Type="Self.admins" Multiplicity="0..1" />
+    <End Role="payments" Type="Self.payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="admins">
+        <PropertyRef Name="id_admin" />
+      </Principal>
+      <Dependent Role="payments">
+        <PropertyRef Name="id_admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_car_cars">
+    <End Role="cars" Type="Self.cars" Multiplicity="0..1" />
+    <End Role="order_car" Type="Self.order_car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cars">
+        <PropertyRef Name="id_mobil" />
+      </Principal>
+      <Dependent Role="order_car">
+        <PropertyRef Name="id_car" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_members">
+    <End Role="members" Type="Self.members" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="members">
+        <PropertyRef Name="id_member" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="id_member" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_car_orders">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="order_car" Type="Self.order_car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id_order" />
+      </Principal>
+      <Dependent Role="order_car">
+        <PropertyRef Name="id_order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_payments_orders">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="payments" Type="Self.payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id_order" />
+      </Principal>
+      <Dependent Role="payments">
+        <PropertyRef Name="id_order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_rental_mobilEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="admins" EntityType="Self.admins" />
+    <EntitySet Name="cars" EntityType="Self.cars" />
+    <EntitySet Name="members" EntityType="Self.members" />
+    <EntitySet Name="order_car" EntityType="Self.order_car" />
+    <EntitySet Name="orders" EntityType="Self.orders" />
+    <EntitySet Name="payments" EntityType="Self.payments" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <AssociationSet Name="FK_orders_admins" Association="Self.FK_orders_admins">
+      <End Role="admins" EntitySet="admins" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_payments_admins" Association="Self.FK_payments_admins">
+      <End Role="admins" EntitySet="admins" />
+      <End Role="payments" EntitySet="payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_car_cars" Association="Self.FK_order_car_cars">
+      <End Role="cars" EntitySet="cars" />
+      <End Role="order_car" EntitySet="order_car" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_members" Association="Self.FK_orders_members">
+      <End Role="members" EntitySet="members" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_car_orders" Association="Self.FK_order_car_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_car" EntitySet="order_car" />
+    </AssociationSet>
+    <AssociationSet Name="FK_payments_orders" Association="Self.FK_payments_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="payments" EntitySet="payments" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(db_rental_mobilModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(db_rental_mobilModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="view_cars_ready_for_order" EntityType="db_rental_mobilModel.view_cars_ready_for_order" />
+    <EntitySet Name="view_order_full" EntityType="db_rental_mobilModel.view_order_full" />
+    <EntitySet Name="view_for_payments" EntityType="db_rental_mobilModel.view_for_payments" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="view_cars_ready_for_order">
+    <Key>
+      <PropertyRef Name="id_mobil" />
+    </Key>
+    <Property Name="nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="vendor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="harga_sewa" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="transmisi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="bagasi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="deskripsi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_mobil" Type="Int32" Nullable="false" />
+    <Property Name="id_member" Type="Int32" />
+    <Property Name="waktu_ambil" Type="DateTime" Precision="3" />
+    <Property Name="waktu_kembali" Type="DateTime" Precision="3" />
+    <Property Name="jumlah" Type="Int32" />
+    <Property Name="total_price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Expr1" Type="Int32" />
+  </EntityType>
+  <EntityType Name="view_order_full">
+    <Key>
+      <PropertyRef Name="id_order" />
+      <PropertyRef Name="id_admin" />
+      <PropertyRef Name="id_member" />
+      <PropertyRef Name="id_order_car" />
+      <PropertyRef Name="id_mobil" />
+      <PropertyRef Name="id_payment" />
+    </Key>
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nama_member" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="nama_admin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_order" Type="Int32" Nullable="false" />
+    <Property Name="waktu_ambil" Type="DateTime" Precision="3" />
+    <Property Name="waktu_kembali" Type="DateTime" Precision="3" />
+    <Property Name="invoice_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id_admin" Type="Int32" Nullable="false" />
+    <Property Name="id_member" Type="Int32" Nullable="false" />
+    <Property Name="id_order_car" Type="Int32" Nullable="false" />
+    <Property Name="id_mobil" Type="Int32" Nullable="false" />
+    <Property Name="id__member_on_order" Type="Int32" />
+    <Property Name="id_admin_on_orders" Type="Int32" />
+    <Property Name="denda1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="nama_mobil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_payment" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_for_payments">
+    <Key>
+      <PropertyRef Name="id_order_car" />
+      <PropertyRef Name="id_order" />
+      <PropertyRef Name="id_member" />
+      <PropertyRef Name="id_payment" />
+    </Key>
+    <Property Name="id_order_car" Type="Int32" Nullable="false" />
+    <Property Name="nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="id_order" Type="Int32" Nullable="false" />
+    <Property Name="id_member" Type="Int32" Nullable="false" />
+    <Property Name="nama_admin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="waktu_ambil" Type="DateTime" Precision="3" />
+    <Property Name="waktu_kembali" Type="DateTime" Precision="3" />
+    <Property Name="nama_member" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="invoice_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tgl_order" Type="DateTime" Precision="3" />
+    <Property Name="harga_sewa" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="total_price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="id_payment" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

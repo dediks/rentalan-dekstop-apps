@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_rental_mobilModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admins">
+    <Key>
+      <PropertyRef Name="id_admin" />
+    </Key>
+    <Property Name="id_admin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama" Type="varchar" MaxLength="50" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="cars">
+    <Key>
+      <PropertyRef Name="id_mobil" />
+    </Key>
+    <Property Name="id_mobil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama" Type="varchar(max)" />
+    <Property Name="vendor" Type="varchar(max)" />
+    <Property Name="harga_sewa" Type="money" />
+    <Property Name="transmisi" Type="varchar" MaxLength="50" />
+    <Property Name="bagasi" Type="varchar" MaxLength="50" />
+    <Property Name="deskripsi" Type="text" />
+    <Property Name="image" Type="image" />
+  </EntityType>
+  <EntityType Name="members">
+    <Key>
+      <PropertyRef Name="id_member" />
+    </Key>
+    <Property Name="id_member" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="no_identitas" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="nama" Type="varchar" MaxLength="50" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="no_telp" Type="varchar" MaxLength="50" />
+    <Property Name="alamat" Type="text" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="order_car">
+    <Key>
+      <PropertyRef Name="id_order_car" />
+    </Key>
+    <Property Name="id_order_car" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_order" Type="int" />
+    <Property Name="id_car" Type="int" />
+    <Property Name="jumlah" Type="int" />
+    <Property Name="waktu_ambil" Type="datetime" />
+    <Property Name="waktu_kembali" Type="datetime" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="id_order" />
+    </Key>
+    <Property Name="id_order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_member" Type="int" />
+    <Property Name="invoice_number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="total_price" Type="money" />
+    <Property Name="tgl_order" Type="datetime" />
+    <Property Name="id_admin" Type="int" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="payments">
+    <Key>
+      <PropertyRef Name="id_payment" />
+    </Key>
+    <Property Name="id_admin" Type="int" />
+    <Property Name="id_payment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_member" Type="int" />
+    <Property Name="id_order" Type="int" />
+    <Property Name="waktu_bayar" Type="datetime" />
+    <Property Name="nama_rekening" Type="varchar" MaxLength="255" />
+    <Property Name="nominal" Type="money" />
+    <Property Name="nama_bank" Type="varchar" MaxLength="255" />
+    <Property Name="nomor_rekening" Type="varchar" MaxLength="255" />
+    <Property Name="denda" Type="money" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_rental_mobil.dbo.view_cars_ready_for_order' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_cars_ready_for_order">
+    <Key>
+      <PropertyRef Name="id_mobil" />
+    </Key>
+    <Property Name="nama" Type="varchar(max)" />
+    <Property Name="vendor" Type="varchar(max)" />
+    <Property Name="harga_sewa" Type="money" />
+    <Property Name="image" Type="image" />
+    <Property Name="transmisi" Type="varchar" MaxLength="50" />
+    <Property Name="bagasi" Type="varchar" MaxLength="50" />
+    <Property Name="deskripsi" Type="text" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="id_mobil" Type="int" Nullable="false" />
+    <Property Name="id_member" Type="int" />
+    <Property Name="waktu_ambil" Type="datetime" />
+    <Property Name="waktu_kembali" Type="datetime" />
+    <Property Name="jumlah" Type="int" />
+    <Property Name="total_price" Type="money" />
+    <Property Name="Expr1" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_rental_mobil.dbo.view_for_payments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_for_payments">
+    <Key>
+      <PropertyRef Name="id_order_car" />
+      <PropertyRef Name="id_order" />
+      <PropertyRef Name="id_member" />
+      <PropertyRef Name="id_payment" />
+    </Key>
+    <Property Name="id_order_car" Type="int" Nullable="false" />
+    <Property Name="nama" Type="varchar(max)" />
+    <Property Name="id_order" Type="int" Nullable="false" />
+    <Property Name="id_member" Type="int" Nullable="false" />
+    <Property Name="nama_admin" Type="varchar" MaxLength="50" />
+    <Property Name="waktu_ambil" Type="datetime" />
+    <Property Name="waktu_kembali" Type="datetime" />
+    <Property Name="nama_member" Type="varchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="invoice_number" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="tgl_order" Type="datetime" />
+    <Property Name="harga_sewa" Type="money" />
+    <Property Name="total_price" Type="money" />
+    <Property Name="id_payment" Type="int" Nullable="false" />
+    <Property Name="Expr1" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_rental_mobil.dbo.view_order_full' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_order_full">
+    <Key>
+      <PropertyRef Name="id_order" />
+      <PropertyRef Name="id_admin" />
+      <PropertyRef Name="id_member" />
+      <PropertyRef Name="id_order_car" />
+      <PropertyRef Name="id_mobil" />
+      <PropertyRef Name="id_payment" />
+    </Key>
+    <Property Name="status" Type="varchar" MaxLength="50" />
+    <Property Name="nama_member" Type="varchar" MaxLength="50" />
+    <Property Name="nama_admin" Type="varchar" MaxLength="50" />
+    <Property Name="nama_mobil" Type="varchar(max)" />
+    <Property Name="id_order" Type="int" Nullable="false" />
+    <Property Name="waktu_ambil" Type="datetime" />
+    <Property Name="waktu_kembali" Type="datetime" />
+    <Property Name="invoice_number" Type="varchar" MaxLength="50" />
+    <Property Name="id_admin" Type="int" Nullable="false" />
+    <Property Name="id_member" Type="int" Nullable="false" />
+    <Property Name="id_order_car" Type="int" Nullable="false" />
+    <Property Name="id_mobil" Type="int" Nullable="false" />
+    <Property Name="id_.member_on_order" Type="int" />
+    <Property Name="id_admin_on_orders" Type="int" />
+    <Property Name="denda" Type="money" />
+    <Property Name="id_payment" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_order_car_cars">
+    <End Role="cars" Type="Self.cars" Multiplicity="0..1" />
+    <End Role="order_car" Type="Self.order_car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cars">
+        <PropertyRef Name="id_mobil" />
+      </Principal>
+      <Dependent Role="order_car">
+        <PropertyRef Name="id_car" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_car_orders">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="order_car" Type="Self.order_car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id_order" />
+      </Principal>
+      <Dependent Role="order_car">
+        <PropertyRef Name="id_order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_admins">
+    <End Role="admins" Type="Self.admins" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="admins">
+        <PropertyRef Name="id_admin" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="id_admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orders_members">
+    <End Role="members" Type="Self.members" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="members">
+        <PropertyRef Name="id_member" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="id_member" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_payments_admins">
+    <End Role="admins" Type="Self.admins" Multiplicity="0..1" />
+    <End Role="payments" Type="Self.payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="admins">
+        <PropertyRef Name="id_admin" />
+      </Principal>
+      <Dependent Role="payments">
+        <PropertyRef Name="id_admin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_payments_orders">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="payments" Type="Self.payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id_order" />
+      </Principal>
+      <Dependent Role="payments">
+        <PropertyRef Name="id_order" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="db_rental_mobilModelStoreContainer">
+    <EntitySet Name="admins" EntityType="Self.admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cars" EntityType="Self.cars" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="members" EntityType="Self.members" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order_car" EntityType="Self.order_car" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payments" EntityType="Self.payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="view_cars_ready_for_order" EntityType="Self.view_cars_ready_for_order" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_cars_ready_for_order].[nama] AS [nama], 
+    [view_cars_ready_for_order].[vendor] AS [vendor], 
+    [view_cars_ready_for_order].[harga_sewa] AS [harga_sewa], 
+    [view_cars_ready_for_order].[image] AS [image], 
+    [view_cars_ready_for_order].[transmisi] AS [transmisi], 
+    [view_cars_ready_for_order].[bagasi] AS [bagasi], 
+    [view_cars_ready_for_order].[deskripsi] AS [deskripsi], 
+    [view_cars_ready_for_order].[status] AS [status], 
+    [view_cars_ready_for_order].[id_mobil] AS [id_mobil], 
+    [view_cars_ready_for_order].[id_member] AS [id_member], 
+    [view_cars_ready_for_order].[waktu_ambil] AS [waktu_ambil], 
+    [view_cars_ready_for_order].[waktu_kembali] AS [waktu_kembali], 
+    [view_cars_ready_for_order].[jumlah] AS [jumlah], 
+    [view_cars_ready_for_order].[total_price] AS [total_price], 
+    [view_cars_ready_for_order].[Expr1] AS [Expr1]
+    FROM [dbo].[view_cars_ready_for_order] AS [view_cars_ready_for_order]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_for_payments" EntityType="Self.view_for_payments" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_for_payments].[id_order_car] AS [id_order_car], 
+    [view_for_payments].[nama] AS [nama], 
+    [view_for_payments].[id_order] AS [id_order], 
+    [view_for_payments].[id_member] AS [id_member], 
+    [view_for_payments].[nama_admin] AS [nama_admin], 
+    [view_for_payments].[waktu_ambil] AS [waktu_ambil], 
+    [view_for_payments].[waktu_kembali] AS [waktu_kembali], 
+    [view_for_payments].[nama_member] AS [nama_member], 
+    [view_for_payments].[status] AS [status], 
+    [view_for_payments].[invoice_number] AS [invoice_number], 
+    [view_for_payments].[tgl_order] AS [tgl_order], 
+    [view_for_payments].[harga_sewa] AS [harga_sewa], 
+    [view_for_payments].[total_price] AS [total_price], 
+    [view_for_payments].[id_payment] AS [id_payment], 
+    [view_for_payments].[Expr1] AS [Expr1]
+    FROM [dbo].[view_for_payments] AS [view_for_payments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_order_full" EntityType="Self.view_order_full" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_order_full].[status] AS [status], 
+    [view_order_full].[nama_member] AS [nama_member], 
+    [view_order_full].[nama_admin] AS [nama_admin], 
+    [view_order_full].[nama_mobil] AS [nama_mobil], 
+    [view_order_full].[id_order] AS [id_order], 
+    [view_order_full].[waktu_ambil] AS [waktu_ambil], 
+    [view_order_full].[waktu_kembali] AS [waktu_kembali], 
+    [view_order_full].[invoice_number] AS [invoice_number], 
+    [view_order_full].[id_admin] AS [id_admin], 
+    [view_order_full].[id_member] AS [id_member], 
+    [view_order_full].[id_order_car] AS [id_order_car], 
+    [view_order_full].[id_mobil] AS [id_mobil], 
+    [view_order_full].[id_.member_on_order] AS [id_.member_on_order], 
+    [view_order_full].[id_admin_on_orders] AS [id_admin_on_orders], 
+    [view_order_full].[denda] AS [denda], 
+    [view_order_full].[id_payment] AS [id_payment]
+    FROM [dbo].[view_order_full] AS [view_order_full]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_order_car_cars" Association="Self.FK_order_car_cars">
+      <End Role="cars" EntitySet="cars" />
+      <End Role="order_car" EntitySet="order_car" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_car_orders" Association="Self.FK_order_car_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_car" EntitySet="order_car" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_admins" Association="Self.FK_orders_admins">
+      <End Role="admins" EntitySet="admins" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orders_members" Association="Self.FK_orders_members">
+      <End Role="members" EntitySet="members" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_payments_admins" Association="Self.FK_payments_admins">
+      <End Role="admins" EntitySet="admins" />
+      <End Role="payments" EntitySet="payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_payments_orders" Association="Self.FK_payments_orders">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="payments" EntitySet="payments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

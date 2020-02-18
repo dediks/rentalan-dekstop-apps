@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_rental_mobilModelStoreContainer" CdmEntityContainer="db_rental_mobilEntities">
+    <EntitySetMapping Name="admins">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.admins">
+        <MappingFragment StoreEntitySet="admins">
+          <ScalarProperty Name="id_admin" ColumnName="id_admin" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cars">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.cars">
+        <MappingFragment StoreEntitySet="cars">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="id_mobil" ColumnName="id_mobil" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="vendor" ColumnName="vendor" />
+          <ScalarProperty Name="harga_sewa" ColumnName="harga_sewa" />
+          <ScalarProperty Name="transmisi" ColumnName="transmisi" />
+          <ScalarProperty Name="bagasi" ColumnName="bagasi" />
+          <ScalarProperty Name="deskripsi" ColumnName="deskripsi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="members">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.members">
+        <MappingFragment StoreEntitySet="members">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+          <ScalarProperty Name="no_identitas" ColumnName="no_identitas" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="no_telp" ColumnName="no_telp" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_car">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.order_car">
+        <MappingFragment StoreEntitySet="order_car">
+          <ScalarProperty Name="id_order_car" ColumnName="id_order_car" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_car" ColumnName="id_car" />
+          <ScalarProperty Name="jumlah" ColumnName="jumlah" />
+          <ScalarProperty Name="waktu_ambil" ColumnName="waktu_ambil" />
+          <ScalarProperty Name="waktu_kembali" ColumnName="waktu_kembali" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.orders">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+          <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="tgl_order" ColumnName="tgl_order" />
+          <ScalarProperty Name="id_admin" ColumnName="id_admin" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payments">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.payments">
+        <MappingFragment StoreEntitySet="payments">
+          <ScalarProperty Name="id_admin" ColumnName="id_admin" />
+          <ScalarProperty Name="id_payment" ColumnName="id_payment" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="waktu_bayar" ColumnName="waktu_bayar" />
+          <ScalarProperty Name="nama_rekening" ColumnName="nama_rekening" />
+          <ScalarProperty Name="nominal" ColumnName="nominal" />
+          <ScalarProperty Name="nama_bank" ColumnName="nama_bank" />
+          <ScalarProperty Name="nomor_rekening" ColumnName="nomor_rekening" />
+          <ScalarProperty Name="denda" ColumnName="denda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="db_rental_mobilModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="db_rental_mobilModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="db_rental_mobilModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="db_rental_mobilModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="db_rental_mobilModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="db_rental_mobilModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="db_rental_mobilModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db_rental_mobilModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db_rental_mobilModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="view_cars_ready_for_order">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.view_cars_ready_for_order">
+        <MappingFragment StoreEntitySet="view_cars_ready_for_order">
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="jumlah" ColumnName="jumlah" />
+          <ScalarProperty Name="waktu_kembali" ColumnName="waktu_kembali" />
+          <ScalarProperty Name="waktu_ambil" ColumnName="waktu_ambil" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+          <ScalarProperty Name="id_mobil" ColumnName="id_mobil" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="deskripsi" ColumnName="deskripsi" />
+          <ScalarProperty Name="bagasi" ColumnName="bagasi" />
+          <ScalarProperty Name="transmisi" ColumnName="transmisi" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="harga_sewa" ColumnName="harga_sewa" />
+          <ScalarProperty Name="vendor" ColumnName="vendor" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_order_full">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.view_order_full">
+        <MappingFragment StoreEntitySet="view_order_full">
+          <ScalarProperty Name="id_payment" ColumnName="id_payment" />
+          <ScalarProperty Name="nama_mobil" ColumnName="nama_mobil" />
+          <ScalarProperty Name="denda1" ColumnName="denda" />
+          <ScalarProperty Name="id_admin_on_orders" ColumnName="id_admin_on_orders" />
+          <ScalarProperty Name="id__member_on_order" ColumnName="id_.member_on_order" />
+          <ScalarProperty Name="id_mobil" ColumnName="id_mobil" />
+          <ScalarProperty Name="id_order_car" ColumnName="id_order_car" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+          <ScalarProperty Name="id_admin" ColumnName="id_admin" />
+          <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+          <ScalarProperty Name="waktu_kembali" ColumnName="waktu_kembali" />
+          <ScalarProperty Name="waktu_ambil" ColumnName="waktu_ambil" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="nama_admin" ColumnName="nama_admin" />
+          <ScalarProperty Name="nama_member" ColumnName="nama_member" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_for_payments">
+      <EntityTypeMapping TypeName="db_rental_mobilModel.view_for_payments">
+        <MappingFragment StoreEntitySet="view_for_payments">
+          <ScalarProperty Name="id_payment" ColumnName="id_payment" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="harga_sewa" ColumnName="harga_sewa" />
+          <ScalarProperty Name="tgl_order" ColumnName="tgl_order" />
+          <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="nama_member" ColumnName="nama_member" />
+          <ScalarProperty Name="waktu_kembali" ColumnName="waktu_kembali" />
+          <ScalarProperty Name="waktu_ambil" ColumnName="waktu_ambil" />
+          <ScalarProperty Name="nama_admin" ColumnName="nama_admin" />
+          <ScalarProperty Name="id_member" ColumnName="id_member" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="id_order_car" ColumnName="id_order_car" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

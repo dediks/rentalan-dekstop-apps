@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="db_rental_mobilDataSet3" targetNamespace="http://tempuri.org/db_rental_mobilDataSet3.xsd" xmlns:mstns="http://tempuri.org/db_rental_mobilDataSet3.xsd" xmlns="http://tempuri.org/db_rental_mobilDataSet3.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="db_rental_mobilConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="db_rental_mobilConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.RentalMobil.Properties.Settings.GlobalReference.Default.db_rental_mobilConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_cars_ready_for_orderTableAdapter" GeneratorDataComponentClassName="view_cars_ready_for_orderTableAdapter" Name="view_cars_ready_for_order" UserDataComponentName="view_cars_ready_for_orderTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="db_rental_mobilConnectionString (Settings)" DbObjectName="db_rental_mobil.dbo.view_cars_ready_for_order" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nama, vendor, harga_sewa, image, transmisi, bagasi, deskripsi, status, id_mobil, id_member, waktu_ambil, waktu_kembali, jumlah, total_price FROM dbo.view_cars_ready_for_order</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nama" DataSetColumn="nama" />
+              <Mapping SourceColumn="vendor" DataSetColumn="vendor" />
+              <Mapping SourceColumn="harga_sewa" DataSetColumn="harga_sewa" />
+              <Mapping SourceColumn="image" DataSetColumn="image" />
+              <Mapping SourceColumn="transmisi" DataSetColumn="transmisi" />
+              <Mapping SourceColumn="bagasi" DataSetColumn="bagasi" />
+              <Mapping SourceColumn="deskripsi" DataSetColumn="deskripsi" />
+              <Mapping SourceColumn="status" DataSetColumn="status" />
+              <Mapping SourceColumn="id_mobil" DataSetColumn="id_mobil" />
+              <Mapping SourceColumn="id_member" DataSetColumn="id_member" />
+              <Mapping SourceColumn="waktu_ambil" DataSetColumn="waktu_ambil" />
+              <Mapping SourceColumn="waktu_kembali" DataSetColumn="waktu_kembali" />
+              <Mapping SourceColumn="jumlah" DataSetColumn="jumlah" />
+              <Mapping SourceColumn="total_price" DataSetColumn="total_price" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="db_rental_mobilConnectionString (Settings)" DbObjectName="db_rental_mobil.dbo.view_cars_ready_for_order" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nama, vendor, harga_sewa, image, transmisi, bagasi, deskripsi, status, id_mobil, id_member, waktu_ambil, waktu_kembali, jumlah, total_price FROM dbo.view_cars_ready_for_order WHERE id_member = 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="db_rental_mobilConnectionString (Settings)" DbObjectName="db_rental_mobil.dbo.view_cars_ready_for_order" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy1" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="FillBy1">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT nama, vendor, harga_sewa, image, transmisi, bagasi, deskripsi, status, id_mobil, id_member, waktu_ambil, waktu_kembali, jumlah, total_price FROM dbo.view_cars_ready_for_order</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="db_rental_mobilDataSet3" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="db_rental_mobilDataSet3" msprop:Generator_UserDSName="db_rental_mobilDataSet3">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_cars_ready_for_order" msprop:Generator_TableClassName="view_cars_ready_for_orderDataTable" msprop:Generator_TableVarName="tableview_cars_ready_for_order" msprop:Generator_TablePropName="view_cars_ready_for_order" msprop:Generator_RowDeletingName="view_cars_ready_for_orderRowDeleting" msprop:Generator_RowChangingName="view_cars_ready_for_orderRowChanging" msprop:Generator_RowEvHandlerName="view_cars_ready_for_orderRowChangeEventHandler" msprop:Generator_RowDeletedName="view_cars_ready_for_orderRowDeleted" msprop:Generator_UserTableName="view_cars_ready_for_order" msprop:Generator_RowChangedName="view_cars_ready_for_orderRowChanged" msprop:Generator_RowEvArgName="view_cars_ready_for_orderRowChangeEvent" msprop:Generator_RowClassName="view_cars_ready_for_orderRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nama" msprop:Generator_ColumnVarNameInTable="columnnama" msprop:Generator_ColumnPropNameInRow="nama" msprop:Generator_ColumnPropNameInTable="namaColumn" msprop:Generator_UserColumnName="nama" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="vendor" msprop:Generator_ColumnVarNameInTable="columnvendor" msprop:Generator_ColumnPropNameInRow="vendor" msprop:Generator_ColumnPropNameInTable="vendorColumn" msprop:Generator_UserColumnName="vendor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="harga_sewa" msprop:Generator_ColumnVarNameInTable="columnharga_sewa" msprop:Generator_ColumnPropNameInRow="harga_sewa" msprop:Generator_ColumnPropNameInTable="harga_sewaColumn" msprop:Generator_UserColumnName="harga_sewa" type="xs:decimal" minOccurs="0" />
+              <xs:element name="image" msprop:Generator_ColumnVarNameInTable="columnimage" msprop:Generator_ColumnPropNameInRow="image" msprop:Generator_ColumnPropNameInTable="imageColumn" msprop:Generator_UserColumnName="image" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="transmisi" msprop:Generator_ColumnVarNameInTable="columntransmisi" msprop:Generator_ColumnPropNameInRow="transmisi" msprop:Generator_ColumnPropNameInTable="transmisiColumn" msprop:Generator_UserColumnName="transmisi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="bagasi" msprop:Generator_ColumnVarNameInTable="columnbagasi" msprop:Generator_ColumnPropNameInRow="bagasi" msprop:Generator_ColumnPropNameInTable="bagasiColumn" msprop:Generator_UserColumnName="bagasi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="deskripsi" msprop:Generator_ColumnVarNameInTable="columndeskripsi" msprop:Generator_ColumnPropNameInRow="deskripsi" msprop:Generator_ColumnPropNameInTable="deskripsiColumn" msprop:Generator_UserColumnName="deskripsi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="id_mobil" msprop:Generator_ColumnVarNameInTable="columnid_mobil" msprop:Generator_ColumnPropNameInRow="id_mobil" msprop:Generator_ColumnPropNameInTable="id_mobilColumn" msprop:Generator_UserColumnName="id_mobil" type="xs:int" />
+              <xs:element name="id_member" msprop:Generator_ColumnVarNameInTable="columnid_member" msprop:Generator_ColumnPropNameInRow="id_member" msprop:Generator_ColumnPropNameInTable="id_memberColumn" msprop:Generator_UserColumnName="id_member" type="xs:int" minOccurs="0" />
+              <xs:element name="waktu_ambil" msprop:Generator_ColumnVarNameInTable="columnwaktu_ambil" msprop:Generator_ColumnPropNameInRow="waktu_ambil" msprop:Generator_ColumnPropNameInTable="waktu_ambilColumn" msprop:Generator_UserColumnName="waktu_ambil" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="waktu_kembali" msprop:Generator_ColumnVarNameInTable="columnwaktu_kembali" msprop:Generator_ColumnPropNameInRow="waktu_kembali" msprop:Generator_ColumnPropNameInTable="waktu_kembaliColumn" msprop:Generator_UserColumnName="waktu_kembali" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="jumlah" msprop:Generator_ColumnVarNameInTable="columnjumlah" msprop:Generator_ColumnPropNameInRow="jumlah" msprop:Generator_ColumnPropNameInTable="jumlahColumn" msprop:Generator_UserColumnName="jumlah" type="xs:int" minOccurs="0" />
+              <xs:element name="total_price" msprop:Generator_ColumnVarNameInTable="columntotal_price" msprop:Generator_ColumnPropNameInRow="total_price" msprop:Generator_ColumnPropNameInTable="total_priceColumn" msprop:Generator_UserColumnName="total_price" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:view_cars_ready_for_order" />
+      <xs:field xpath="mstns:id_mobil" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

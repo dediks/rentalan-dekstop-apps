@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="db_rental_mobil_rents_history" targetNamespace="http://tempuri.org/db_rental_mobil_rents_history.xsd" xmlns:mstns="http://tempuri.org/db_rental_mobil_rents_history.xsd" xmlns="http://tempuri.org/db_rental_mobil_rents_history.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="db_rental_mobilConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="db_rental_mobilConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.RentalMobil.Properties.Settings.GlobalReference.Default.db_rental_mobilConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_order_fullTableAdapter" GeneratorDataComponentClassName="view_order_fullTableAdapter" Name="view_order_full" UserDataComponentName="view_order_fullTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="db_rental_mobilConnectionString (Settings)" DbObjectName="db_rental_mobil.dbo.view_order_full" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT status, nama_member, nama_admin, denda, id_order, waktu_ambil, waktu_kembali, invoice_number FROM view_order_full</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="status" DataSetColumn="status" />
+              <Mapping SourceColumn="nama_member" DataSetColumn="nama_member" />
+              <Mapping SourceColumn="nama_admin" DataSetColumn="nama_admin" />
+              <Mapping SourceColumn="denda" DataSetColumn="denda" />
+              <Mapping SourceColumn="id_order" DataSetColumn="id_order" />
+              <Mapping SourceColumn="waktu_ambil" DataSetColumn="waktu_ambil" />
+              <Mapping SourceColumn="waktu_kembali" DataSetColumn="waktu_kembali" />
+              <Mapping SourceColumn="invoice_number" DataSetColumn="invoice_number" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="db_rental_mobilConnectionString (Settings)" DbObjectName="db_rental_mobil.dbo.view_order_full" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="FillBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT status, nama_member, nama_admin, denda, id_order, waktu_ambil, waktu_kembali, invoice_number
+FROM     view_order_full
+WHERE  (id_member = 1)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="db_rental_mobil_rents_history" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="db_rental_mobil_rents_history" msprop:Generator_UserDSName="db_rental_mobil_rents_history">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_order_full" msprop:Generator_TableClassName="view_order_fullDataTable" msprop:Generator_TableVarName="tableview_order_full" msprop:Generator_RowChangedName="view_order_fullRowChanged" msprop:Generator_TablePropName="view_order_full" msprop:Generator_RowDeletingName="view_order_fullRowDeleting" msprop:Generator_RowChangingName="view_order_fullRowChanging" msprop:Generator_RowEvHandlerName="view_order_fullRowChangeEventHandler" msprop:Generator_RowDeletedName="view_order_fullRowDeleted" msprop:Generator_RowClassName="view_order_fullRow" msprop:Generator_UserTableName="view_order_full" msprop:Generator_RowEvArgName="view_order_fullRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nama_member" msprop:Generator_ColumnVarNameInTable="columnnama_member" msprop:Generator_ColumnPropNameInRow="nama_member" msprop:Generator_ColumnPropNameInTable="nama_memberColumn" msprop:Generator_UserColumnName="nama_member" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nama_admin" msprop:Generator_ColumnVarNameInTable="columnnama_admin" msprop:Generator_ColumnPropNameInRow="nama_admin" msprop:Generator_ColumnPropNameInTable="nama_adminColumn" msprop:Generator_UserColumnName="nama_admin" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="denda" msprop:Generator_ColumnVarNameInTable="columndenda" msprop:Generator_ColumnPropNameInRow="denda" msprop:Generator_ColumnPropNameInTable="dendaColumn" msprop:Generator_UserColumnName="denda" type="xs:decimal" minOccurs="0" />
+              <xs:element name="id_order" msprop:Generator_ColumnVarNameInTable="columnid_order" msprop:Generator_ColumnPropNameInRow="id_order" msprop:Generator_ColumnPropNameInTable="id_orderColumn" msprop:Generator_UserColumnName="id_order" type="xs:int" />
+              <xs:element name="waktu_ambil" msprop:Generator_ColumnVarNameInTable="columnwaktu_ambil" msprop:Generator_ColumnPropNameInRow="waktu_ambil" msprop:Generator_ColumnPropNameInTable="waktu_ambilColumn" msprop:Generator_UserColumnName="waktu_ambil" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="waktu_kembali" msprop:Generator_ColumnVarNameInTable="columnwaktu_kembali" msprop:Generator_ColumnPropNameInRow="waktu_kembali" msprop:Generator_ColumnPropNameInTable="waktu_kembaliColumn" msprop:Generator_UserColumnName="waktu_kembali" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="invoice_number" msprop:Generator_ColumnVarNameInTable="columninvoice_number" msprop:Generator_ColumnPropNameInRow="invoice_number" msprop:Generator_ColumnPropNameInTable="invoice_numberColumn" msprop:Generator_UserColumnName="invoice_number" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:view_order_full" />
+      <xs:field xpath="mstns:id_order" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
